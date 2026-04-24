@@ -6,7 +6,7 @@
 
 **Q: Why not use an existing viewer like the iTwin.js viewer or Bentley's own WebGL tools?**
 
-A: Those viewers are the production destination. This prototype is the wedge — it proves the concept in the simplest possible way, with zero dependencies on platform APIs, so we can iterate at hackathon speed. The architecture is deliberately designed to connect upward: the parametric model in `chalet.js` can be replaced with iTwin project data, and the annotation layer stays intact. We chose to prove the client-facing interaction model first, then integrate.
+A: Those viewers are the production destination. This prototype is the wedge. It proves the concept in the simplest possible way, with zero dependencies on platform APIs, so we can iterate at hackathon speed. The architecture is deliberately designed to connect upward: the parametric model in `chalet.js` can be replaced with iTwin project data, and the annotation layer stays intact. We chose to prove the client-facing interaction model first, then integrate.
 
 ---
 
@@ -30,7 +30,7 @@ A: For the prototype, it is a feature. Zero backend means zero infrastructure, z
 
 **Q: Why vanilla JS instead of React or TypeScript?**
 
-A: At this scale, framework overhead adds build complexity and slows initial development without providing client-facing benefit. Each JS module has a single responsibility and is independently readable. TypeScript would add value in production; at hackathon scale it slows the initial build. Any Bentley engineer familiar with the web stack can open any file and understand it in minutes — that matters for handoff.
+A: At this scale, framework overhead adds build complexity and slows initial development without providing client-facing benefit. Each JS module has a single responsibility and is independently readable. TypeScript would add value in production. At hackathon scale it slows the initial build. Any Bentley engineer familiar with the web stack can open any file and understand it in minutes — that matters for handoff.
 
 ---
 

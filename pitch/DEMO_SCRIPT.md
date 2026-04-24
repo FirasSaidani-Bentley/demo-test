@@ -1,7 +1,7 @@
 # Demo Script
 
 ## Minute-by-minute walkthrough
-**Total runtime: 2 minutes 45 seconds**
+**Total runtime: 2:45**
 *Rehearse this at least twice. Every transition is a spoken cue.*
 
 ---

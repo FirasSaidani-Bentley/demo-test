@@ -12,7 +12,7 @@ Thursday becomes next week. Next week becomes a revision cycle. The revision cyc
 
 The tools that exist today make this worse, not better. Full BIM suites like Revit or MicroStation require trained operators and hours of model setup — they are not something you hand to a client in a meeting. SketchUp offers 3D but no live dimension control. PDF exports from MicroStation are static, 2D, and require a full re-export for every change. None of these let a non-technical client move a slider and immediately see what they are approving.
 
-The problem is not that architects lack tools. It is that the gap between *design tool* and *client conversation* has never been bridged — and every revision cycle is the price of that gap.
+The problem is not that architects lack tools. The gap between *design tool* and *client conversation* has never been bridged. Every revision cycle is the price of that gap.
 
 ---
 
@@ -26,7 +26,7 @@ The client asks the same question — *"Wider living area, lower roof"* — and 
 
 That is the shift: from *"trust the drawing"* to *"see it live."*
 
-This is not a replacement for BIM. It is the front door — a zero-friction visualization layer that collapses the client sign-off loop from days to minutes. It is what happens when browser-based 3D rendering (Three.js, WebGL) finally matures to the point where it runs on a standard laptop, in a standard tab, with no infrastructure behind it.
+This is not a replacement for BIM. It is the front door — a zero-friction visualization layer that collapses the client sign-off loop from days to minutes. Browser-based 3D rendering has matured. Three.js and WebGL now run on standard laptops with no infrastructure behind them.
 
 Bentley already serves over 5,000 infrastructure and construction firms globally. Every client-facing meeting those firms run is an opportunity to replace a static PDF with an interactive model. The parametric viewer is the wedge — lightweight enough to adopt immediately, and architecturally positioned to connect to iTwin data as complexity grows.
 
