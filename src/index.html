@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chalet Configurator — Bentley Systems</title>
+
+  <!-- Import map: resolves bare 'three' specifier used by OrbitControls / CSS2DRenderer -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+</head>
+<body>
+<div id="app">
+
+  <!-- ── 3D Viewport ──────────────────────────────────────────────────── -->
+  <div id="viewport">
+
+    <!-- Top bar -->
+    <div id="topbar">
+      <div id="topbar-brand">
+        <div id="topbar-logo">B</div>
+        <span id="topbar-title">Chalet Configurator</span>
+        <span id="topbar-subtitle">/ Bentley Systems</span>
+      </div>
+      <div id="topbar-actions">
+        <button class="btn btn-ghost" onclick="alert('PDF export — next iteration')">
+          ↓ Export PDF
+        </button>
+        <button class="btn btn-ghost" onclick="alert('Share URL — next iteration')">
+          ⤴ Share
+        </button>
+      </div>
+    </div>
+
+    <p id="viewport-hint">Drag to orbit &nbsp;·&nbsp; Scroll to zoom &nbsp;·&nbsp; Right-click to pan</p>
+  </div>
+
+  <!-- ── Side Panel ────────────────────────────────────────────────────── -->
+  <aside id="panel">
+
+    <div id="panel-header">
+      <h2>Dimensions</h2>
+      <p>Adjust sliders to update the model live</p>
+    </div>
+
+    <div id="panel-body">
+
+      <!-- Presets -->
+      <div class="presets-section">
+        <div class="presets-label">Quick presets</div>
+        <div class="presets-grid">
+          <button class="preset-btn" data-preset="studio">
+            <span>🏠</span>Studio
+          </button>
+          <button class="preset-btn active" data-preset="chalet">
+            <span>🏔️</span>Chalet
+          </button>
+          <button class="preset-btn" data-preset="lodge">
+            <span>🏡</span>Lodge
+          </button>
+        </div>
+      </div>
+
+      <!-- Footprint -->
+      <div class="section-card">
+        <div class="section-card-header">
+          <div class="section-card-icon">⬛</div>
+          <span class="section-card-title">Footprint</span>
+        </div>
+        <div class="section-card-body">
+
+          <div class="slider-control">
+            <div class="slider-row">
+              <span class="slider-label">Width</span>
+              <span class="slider-value" id="slider-width-value">—</span>
+            </div>
+            <div class="slider-track">
+              <input type="range" id="slider-width" min="4" max="20" step="0.5" />
+            </div>
+            <div class="slider-bounds"><span>4 m</span><span>20 m</span></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="slider-control">
+            <div class="slider-row">
+              <span class="slider-label">Depth</span>
+              <span class="slider-value" id="slider-depth-value">—</span>
+            </div>
+            <div class="slider-track">
+              <input type="range" id="slider-depth" min="3" max="16" step="0.5" />
+            </div>
+            <div class="slider-bounds"><span>3 m</span><span>16 m</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Structure -->
+      <div class="section-card">
+        <div class="section-card-header">
+          <div class="section-card-icon">🏗</div>
+          <span class="section-card-title">Structure</span>
+        </div>
+        <div class="section-card-body">
+
+          <div class="slider-control">
+            <div class="slider-row">
+              <span class="slider-label">Wall height</span>
+              <span class="slider-value" id="slider-wallHeight-value">—</span>
+            </div>
+            <div class="slider-track">
+              <input type="range" id="slider-wallHeight" min="2" max="6" step="0.1" />
+            </div>
+            <div class="slider-bounds"><span>2 m</span><span>6 m</span></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="slider-control">
+            <div class="slider-row">
+              <span class="slider-label">Roof pitch</span>
+              <span class="slider-value" id="slider-roofPitch-value">—</span>
+            </div>
+            <div class="slider-track">
+              <input type="range" id="slider-roofPitch" min="10" max="60" step="1" />
+            </div>
+            <div class="slider-bounds"><span>10°</span><span>60°</span></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="slider-control">
+            <div class="slider-row">
+              <span class="slider-label">Roof overhang</span>
+              <span class="slider-value" id="slider-overhang-value">—</span>
+            </div>
+            <div class="slider-track">
+              <input type="range" id="slider-overhang" min="0" max="1.5" step="0.1" />
+            </div>
+            <div class="slider-bounds"><span>0 m</span><span>1.5 m</span></div>
+          </div>
+
+        </div>
+
+        <!-- Toggle annotations -->
+        <div class="toggle-row">
+          <span class="toggle-label">Show annotations</span>
+          <label class="toggle">
+            <input type="checkbox" id="toggle-annotations" checked />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+    </div><!-- /panel-body -->
+
+    <!-- Stats bar -->
+    <div id="stats-bar">
+      <div class="stat-item">
+        <span class="stat-value" id="stat-area">—</span>
+        <span class="stat-label">Floor area</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value" id="stat-totalheight">—</span>
+        <span class="stat-label">Total height</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value" id="stat-roofheight">—</span>
+        <span class="stat-label">Roof height</span>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<script type="module">
+  import { initScene } from './js/scene.js';
+  import { initControls } from './js/controls.js';
+
+  const viewport = document.getElementById('viewport');
+  initScene(viewport);
+  initControls();
+</script>
+</body>
+</html>

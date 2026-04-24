@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Extract PDF",
+			"type": "shell",
+			"command": "/Users/firas.saidani/Documents/demo-test/.venv/bin/python /Users/firas.saidani/Documents/demo-test/extract_pdf.py > /Users/firas.saidani/Documents/demo-test/pdf_content.txt 2>&1"
+		},
+		{
+			"label": "Cleanup temp files",
+			"type": "shell",
+			"command": "rm -f /Users/firas.saidani/Documents/demo-test/extract_pdf.py /Users/firas.saidani/Documents/demo-test/pdf_content.txt"
+		},
+		{
+			"label": "Serve Chalet App",
+			"type": "shell",
+			"command": "cd /Users/firas.saidani/Documents/demo-test/src && python3 -m http.server 8080",
+			"isBackground": true
+		}
+	]
+}
